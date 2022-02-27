@@ -2,8 +2,18 @@ git init (init the new folder as git repo)
 
 
 git status
-git add .       git add filename
+git add . (all)
+git add filename
+git reset filename (unstage the file)
 git commit -m "sbgh"
+git reset COMMIT_SHA (upto that commit including that commit itself, keeps the changes in files in unstaged area)
+git reset --hard COMMIT_SHA (upto that commit including that commit itself, DOESN'T keep the changes in files)
+To undo "git reset or git reset --hard" : git reflog and then see heads to undo
+generally, git reset HEAD@{1}
+
+If u have pushed to github already and reset the commit:
+git reset COMMIT_SHA
+git push origin -f
 
 git remote add origin fvvfv.git
 git push origin
@@ -14,3 +24,37 @@ git push --set-upstream origin dev3  (if newly created dev3 branch is to be push
 GITHUB GUI commits (if want to fetch in local repo):
 git fetch
 git pull
+
+git checkout branch_name (switch the branch)
+git branch branch_name (create branch from the current present branch)
+
+Merge Branch:
+git merge branch_name (commits also copied)
+
+Merge Branch in single commit:
+git merge --squash branch_name (all changes from merge_branch are now in staged area)
+git commit -m ""
+
+Merge Commit from same repo another branch:
+git cherry-pick COMMIT_SHA
+resolve merge conflicts if any (open file and remove >>> ==== <<< , keep the code which u need)
+git add and then git commits
+
+Merge Commit from another repo:
+# Adding (as "endel") the repo from we want to cherry-pick
+$ git remote add endel git://github.com/endel/rest-client.git
+# Fetch their branches
+$ git fetch endel
+# List their commits
+$ git log endel/master
+# Cherry-pick the commit we need
+$ git cherry-pick 97fedac
+# Pushing to our master
+$ git push origin master
+
+GIT stash (save changes that are not staged before changing the branch):
+git stash
+git stash pop (get back all changes)
+
+EXIT the git log or git reflog:
+Press "q"
