@@ -1,0 +1,11 @@
+git init (init the new folder as git repo)
+
+
+git status
+git add .       git add filename
+git commit -m "sbgh"
+
+git remote add origin fvvfv.git
+git push origin
+
+git push --set-upstream origin dev3  (if newly created dev3 branch is to be pushed to github)
